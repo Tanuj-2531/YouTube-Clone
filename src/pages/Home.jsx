@@ -17,27 +17,38 @@ export default function Home() {
   // Stores currently selected filter category
   const [category, setCategory] = useState("All");
 
-  // Filter videos based on selected category
-  const filteredVideos =
-    category === "All"
-      ? videos
-      : videos.filter((v) => v.category === category);
+  // Search query state
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Filter videos based on BOTH category and search
+  const filteredVideos = videos.filter((video) => {
+    const matchesCategory =
+      category === "All" || video.category === category;
+
+    const matchesSearch = video.title
+      .toLowerCase()
+      .includes(searchQuery.toLowerCase());
+
+    return matchesCategory && matchesSearch;
+  });
 
   return (
     <>
-      {/* Top Navbar (also shows user info if logged in) */}
-      <Header toggleSidebar={() => setIsOpen(!isOpen)} />
+      {/* Header now receives search props */}
+      <Header
+        toggleSidebar={() => setIsOpen(!isOpen)}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
 
       <div className="layout">
-        {/* Sidebar navigation */}
         <Sidebar isOpen={isOpen} />
 
-        {/* Main content area */}
         <main className="content">
-          {/* Category filter buttons */}
+          {/* Category filters */}
           <FilterBar activeCategory={category} setCategory={setCategory} />
 
-          {/* Video grid display */}
+          {/* Video grid */}
           <div className="video-grid">
             {filteredVideos.map((video) => (
               <VideoCard key={video.videoId} video={video} />
