@@ -265,26 +265,64 @@ button {
 
 /* TABLET VIEW */
 @media (max-width: 1024px) {
+
+  /* Sidebar becomes compact like YouTube tablet mode */
   .sidebar {
     width: 72px;
+    padding-top: 12px;
   }
 
   .sidebar-item span,
   .sidebar-title,
   .sidebar-footer {
-    display: none;
+    display: none; /* Hide text, show icons only */
   }
 
-  .content {
-    padding: 16px;
+  .sidebar-item {
+    justify-content: center;
+    padding: 12px 0;
   }
 
+  /* Header search becomes slightly smaller */
   .header-center {
-    width: 50%;
+    width: 45%;
   }
 
+  .search-bar input {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  /* Filter bar spacing */
+  .filter-bar {
+    gap: 10px;
+    padding-bottom: 8px;
+  }
+
+  .filter-chip {
+    padding: 5px 12px;
+    font-size: 13px;
+  }
+
+  /* Video grid adjusts to 2–3 columns */
   .video-grid {
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+  }
+
+  /* Video title slightly smaller */
+  .video-title {
+    font-size: 13px;
+  }
+
+  .video-meta,
+  .channel-name {
+    font-size: 12px;
+  }
+
+  /* Content padding tighter */
+  .content {
+    padding: 14px 18px;
   }
 }
 
@@ -447,4 +485,132 @@ button {
 
 .logout-btn:hover {
   background: #3a3a3a;
+}
+
+/* ================= AUTH FORM ================= */
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  margin: auto;
+  background: #181818;
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+}
+
+.auth-card h2 {
+  margin-bottom: 20px;
+}
+
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auth-card input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background: #121212;
+  color: white;
+}
+
+.auth-card button {
+  padding: 10px;
+  border-radius: 20px;
+  background: #cc0000;
+  color: white;
+  font-weight: 500;
+}
+
+.auth-card button:hover {
+  background: #e60000;
+}
+
+.toggle-auth {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #3ea6ff;
+  cursor: pointer;
+}
+
+.auth-error {
+  color: #ff4d4d;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+
+/* ================= AUTH RESPONSIVENESS ================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .login-page {
+    margin: 30px 16px;
+    padding: 22px;
+  }
+
+  .login-page iframe {
+    height: 460px; /* Reduced height for better fit */
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .login-page {
+    margin: 15px 10px;
+    padding: 18px;
+    border-radius: 10px;
+  }
+
+  .login-page h2 {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .login-page iframe {
+    height: 380px; /* Prevents overflow on small screens */
+  }
+
+  .login-page button {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 25px;
+  }
+
+  /* Header auth section */
+  .user-info span {
+    display: none; /* Hide username text on small screens */
+  }
+
+  .logout-btn {
+    padding: 4px 6px;
+    font-size: 11px;
+  }
+
+  .sign-in-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .login-page {
+    margin: 10px 8px;
+    padding: 14px;
+  }
+
+  .login-page iframe {
+    height: 340px; /* Compact size for very small screens */
+  }
+
+  .user-avatar {
+    width: 26px;
+    height: 26px;
+  }
 }

@@ -15,6 +15,7 @@ export default function Header({ toggleSidebar }) {
   // Logout handler
   const handleLogout = () => {
     localStorage.removeItem("user");
+    localStorage.removeItem("token");
     navigate("/login");
   };
 
@@ -24,7 +25,7 @@ export default function Header({ toggleSidebar }) {
         <MenuIcon className="icon" onClick={toggleSidebar} />
         <div className="logo">
           <div className="logo-icon"><div className="play-triangle"></div></div>
-          <span className="logo-text">MyTube</span>
+          <span className="logo-text">YouTube</span>
           <span className="logo-country">IN</span>
         </div>
       </div>
