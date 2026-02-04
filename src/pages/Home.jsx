@@ -1,15 +1,23 @@
 import { useState } from "react";
+
+// UI Components
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import FilterBar from "../components/FilterBar";
 import VideoCard from "../components/VideoCard";
+
+// Static video data
 import videos from "../data/videos";
 
+// Home Page (only accessible after login via ProtectedRoute)
 export default function Home() {
+  // Controls whether sidebar is open or collapsed
   const [isOpen, setIsOpen] = useState(true);
+
+  // Stores currently selected filter category
   const [category, setCategory] = useState("All");
 
-  // Filter videos by selected category
+  // Filter videos based on selected category
   const filteredVideos =
     category === "All"
       ? videos
@@ -17,19 +25,19 @@ export default function Home() {
 
   return (
     <>
-      {/* Navbar */}
+      {/* Top Navbar (also shows user info if logged in) */}
       <Header toggleSidebar={() => setIsOpen(!isOpen)} />
 
       <div className="layout">
-        {/* Sidebar */}
+        {/* Sidebar navigation */}
         <Sidebar isOpen={isOpen} />
 
-        {/* Main Content */}
+        {/* Main content area */}
         <main className="content">
-          {/* Filter Chips Row */}
+          {/* Category filter buttons */}
           <FilterBar activeCategory={category} setCategory={setCategory} />
 
-          {/* Video Grid */}
+          {/* Video grid display */}
           <div className="video-grid">
             {filteredVideos.map((video) => (
               <VideoCard key={video.videoId} video={video} />
