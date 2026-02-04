@@ -358,3 +358,93 @@ button {
     font-size: 16px;
   }
 }
+
+/* ================= LOGIN PAGE ================= */
+
+.login-page {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+  background: #181818;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+}
+
+.login-page h2 {
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+/* Google form frame */
+.login-page iframe {
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+/* Simulate login button */
+.login-page button {
+  background: #cc0000;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.login-page button:hover {
+  background: #e60000;
+}
+
+/* ================= HEADER AUTH AREA ================= */
+
+/* Sign In button (before login) */
+.sign-in-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #3ea6ff;
+  color: #3ea6ff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.sign-in-btn:hover {
+  background: rgba(62, 166, 255, 0.1);
+}
+
+/* Logged-in user info container */
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* User avatar */
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #3ea6ff;
+}
+
+/* Username text */
+.user-info span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Logout button */
+.logout-btn {
+  background: #272727;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  transition: background 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #3a3a3a;
+}
