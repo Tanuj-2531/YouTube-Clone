@@ -1,10 +1,18 @@
+// React core
 import React from "react";
 import ReactDOM from "react-dom/client";
+
+// BrowserRouter enables routing in the whole app
+import { BrowserRouter } from "react-router-dom";
+
 import App from "./App";
 import "./styles.css";
 
+// Render app wrapped with router
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
