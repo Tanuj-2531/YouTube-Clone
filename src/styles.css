@@ -614,3 +614,77 @@ button {
     height: 26px;
   }
 }
+
+/* WATCH PAGE */
+.watch-page {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  color: white;
+}
+
+.video-player {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.video-title {
+  font-size: 22px;
+  margin: 10px 0;
+}
+
+.video-channel {
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.video-actions {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.video-actions button {
+  background: #272727;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.video-description {
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+/* COMMENTS */
+.comments {
+  margin-top: 25px;
+}
+
+.comment-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.comment-input input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 20px;
+  border: none;
+}
+
+.comment-input button {
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: red;
+  color: white;
+  border: none;
+}
+
+.comment {
+  margin-bottom: 12px;
+}

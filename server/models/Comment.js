@@ -1,10 +1,14 @@
 const mongoose = require("mongoose");
 
-// Schema for storing comments related to videos
+// Comment schema
 const commentSchema = new mongoose.Schema({
-  videoId: String,        // ID of the video
-  text: String,           // Comment text
-  createdAt: { type: Date, default: Date.now }
+  videoId: String,
+  text: String,
+  username: String, // 👈 store who commented
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = mongoose.model("Comment", commentSchema);

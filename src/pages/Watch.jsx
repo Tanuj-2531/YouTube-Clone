@@ -1,36 +1,44 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import videos from "../data/videos";
 import CommentSection from "../components/CommentSection";
 
-// Watch page displays the selected video and its details
 export default function Watch() {
-  const { id } = useParams();
+  const { videoId } = useParams();
 
-  // Find video by ID
-  const video = videos.find((v) => v.videoId === id);
+  // Find selected video
+  const video = videos.find((v) => v.videoId === videoId);
+
+  // Like counter (frontend only)
+  const [likes, setLikes] = useState(video.likes || 0);
 
   if (!video) return <h2>Video not found</h2>;
 
   return (
     <div className="watch-page">
       {/* Video Player */}
-      <video controls className="video-player">
+      <video className="video-player" controls>
         <source src={video.videoUrl} type="video/mp4" />
+        Your browser does not support video playback.
       </video>
 
       {/* Video Info */}
-      <h2>{video.title}</h2>
-      <p>{video.description}</p>
-      <p className="channel-name">{video.channelName}</p>
+      <h1 className="video-title">{video.title}</h1>
+      <p className="video-channel">{video.channelName}</p>
 
-      {/* Like / Dislike Buttons (UI only) */}
+      {/* Actions */}
       <div className="video-actions">
-        <button>👍 Like</button>
-        <button>👎 Dislike</button>
+        <button onClick={() => setLikes(likes + 1)}>
+          👍 {likes}
+        </button>
+        <button>👎</button>
       </div>
 
-      {/* Comments Section */}
-      <CommentSection videoId={video.videoId} />
+      {/* Description */}
+      <p className="video-description">{video.description}</p>
+
+      {/* Comments */}
+      <CommentSection videoId={videoId} />
     </div>
   );
 }
