@@ -697,19 +697,24 @@ button {
   max-width: 1200px;
   margin: auto;
   padding: 20px;
+  color: #fff;
 }
 
 .watch-main {
   flex: 3;
+  margin-left: -100px;
 }
 
 .video-player {
-  width: 100%;
+  width: 130%;
+  height: 70%;
+  max-height: 720px;
   border-radius: 12px;
-  margin-bottom: 16px;
+  background: #000;
 }
 
 .video-title {
+  margin-top: 14px;
   font-size: 22px;
   font-weight: 600;
   margin-bottom: 6px;
@@ -723,16 +728,21 @@ button {
 .video-actions {
   display: flex;
   gap: 12px;
-  margin-bottom: 14px;
+  margin: 12px 0;
 }
 
 .video-actions button {
-  background: #272727;
+  background: #222;
   color: #fff;
   border: none;
-  padding: 8px 14px;
+  padding: 6px 14px;
   border-radius: 20px;
   cursor: pointer;
+}
+
+.video-actions button.active {
+  background: #3ea6ff;
+  color: #000;
 }
 
 .video-actions button:hover {
@@ -828,6 +838,7 @@ button {
 
 .related-videos {
   flex: 1;
+  margin-left: 250px;
 }
 
 .related-videos h3 {
