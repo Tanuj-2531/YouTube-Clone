@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
-// Comment schema linked to a video
+// Schema for storing comments related to videos
 const commentSchema = new mongoose.Schema({
-  videoId: String,      // Which video this comment belongs to
-  text: String,         // Comment text
+  videoId: String,        // ID of the video
+  text: String,           // Comment text
   createdAt: { type: Date, default: Date.now }
 });
 
