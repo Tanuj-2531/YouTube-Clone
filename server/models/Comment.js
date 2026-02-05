@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 
 // Comment schema
 const commentSchema = new mongoose.Schema({
-  videoId: String,
-  text: String,
-  username: String, // 👈 store who commented
+  videoId: String,          // Which video this comment belongs to
+  text: String,             // Comment text
+  username: String,         // Comment author
   createdAt: {
     type: Date,
-    default: Date.now,
-  },
+    default: Date.now
+  }
 });
 
 module.exports = mongoose.model("Comment", commentSchema);

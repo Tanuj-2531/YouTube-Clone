@@ -1,9 +1,18 @@
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { useNavigate } from "react-router-dom";
 
 // Displays individual video info
 export default function VideoCard({ video }) {
+  const navigate = useNavigate();
+
+  // Navigate to watch page on click
+  const openVideo = () => {
+    navigate(`/watch/${video.videoId}`);
+  };
+
   return (
-    <div className="video-card">
+    // 🔴 Make entire card clickable
+    <div className="video-card" onClick={openVideo}>
 
       {/* Thumbnail Section */}
       <div className="thumbnail-wrapper">
@@ -30,8 +39,11 @@ export default function VideoCard({ video }) {
           </p>
         </div>
 
-        {/* 3-dot menu */}
-        <MoreVertIcon className="menu-icon" />
+        {/* 3-dot menu (stop click bubbling) */}
+        <MoreVertIcon
+          className="menu-icon"
+          onClick={(e) => e.stopPropagation()}
+        />
 
       </div>
     </div>

@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 // Pages
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Watch from "./pages/Watch"; // 👈 NEW: Video player page
+import Watch from "./pages/Watch";
 
 // Protects pages from unauthorized users
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -15,7 +15,7 @@ function App() {
       {/* Login page (public) */}
       <Route path="/login" element={<Login />} />
 
-      {/* Home page (only visible after login) */}
+      {/* Home page (protected) */}
       <Route
         path="/"
         element={
@@ -25,9 +25,10 @@ function App() {
         }
       />
 
-      {/* Watch page (video player) - also protected */}
+      {/* Watch page (protected) */}
+      {/* 🔴 FIX: :videoId instead of :id */}
       <Route
-        path="/watch/:id"
+        path="/watch/:videoId"
         element={
           <ProtectedRoute>
             <Watch />

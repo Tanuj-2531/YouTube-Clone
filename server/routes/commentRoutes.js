@@ -6,13 +6,13 @@ const router = express.Router();
 /* ================= GET COMMENTS ================= */
 /**
  * Get all comments for a specific video
- * Sorted by newest first
+ * Sorted by newest first (like YouTube)
  */
 router.get("/:videoId", async (req, res) => {
   try {
     const comments = await Comment.find({
       videoId: req.params.videoId,
-    }).sort({ createdAt: -1 }); // newest comments on top
+    }).sort({ createdAt: -1 });
 
     res.json(comments);
   } catch (error) {
@@ -23,13 +23,13 @@ router.get("/:videoId", async (req, res) => {
 /* ================= ADD COMMENT ================= */
 /**
  * Add a new comment
- * Expects: videoId, text, username
+ * Required fields: videoId, text, username
  */
 router.post("/", async (req, res) => {
   try {
     const { videoId, text, username } = req.body;
 
-    // Basic validation
+    // Validation
     if (!videoId || !text || !username) {
       return res.status(400).json({ message: "All fields are required" });
     }
@@ -37,7 +37,7 @@ router.post("/", async (req, res) => {
     const newComment = new Comment({
       videoId,
       text,
-      username, // 👈 store username with comment
+      username,
     });
 
     await newComment.save();
@@ -49,12 +49,12 @@ router.post("/", async (req, res) => {
 
 /* ================= DELETE COMMENT ================= */
 /**
- * Delete a comment by ID
+ * Delete a comment by its ID
  */
 router.delete("/:id", async (req, res) => {
   try {
     await Comment.findByIdAndDelete(req.params.id);
-    res.json({ message: "Deleted" });
+    res.json({ message: "Comment deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: "Failed to delete comment" });
   }
@@ -62,14 +62,19 @@ router.delete("/:id", async (req, res) => {
 
 /* ================= EDIT COMMENT ================= */
 /**
- * Edit a comment by ID
- * Expects updated text
+ * Edit only the comment text
  */
 router.put("/:id", async (req, res) => {
   try {
+    const { text } = req.body;
+
+    if (!text) {
+      return res.status(400).json({ message: "Text is required" });
+    }
+
     const updated = await Comment.findByIdAndUpdate(
       req.params.id,
-      req.body,
+      { text },
       { new: true }
     );
 

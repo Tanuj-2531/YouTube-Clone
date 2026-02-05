@@ -4,6 +4,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const commentRoutes = require("./routes/commentRoutes");
+const videoRoutes = require("./routes/videoRoutes");
 
 const app = express();
 
@@ -12,6 +13,8 @@ app.use(express.json());
 
 // Comment API routes
 app.use("/api/comments", commentRoutes);
+app.use("/api/videos", videoRoutes);
+
 
 // Connect MongoDB
 mongoose.connect(process.env.MONGO_URI)

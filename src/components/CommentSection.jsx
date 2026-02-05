@@ -1,15 +1,40 @@
 import { useEffect, useState } from "react";
 
-// Comment section handles display and CRUD operations
+/* ================= TIME AGO HELPER ================= */
+/**
+ * Converts date to human-readable format like:
+ * "2 hours ago", "5 minutes ago"
+ */
+const timeAgo = (date) => {
+  const seconds = Math.floor((new Date() - new Date(date)) / 1000);
+
+  const intervals = {
+    year: 31536000,
+    month: 2592000,
+    day: 86400,
+    hour: 3600,
+    minute: 60,
+  };
+
+  for (const key in intervals) {
+    const value = Math.floor(seconds / intervals[key]);
+    if (value >= 1) {
+      return `${value} ${key}${value > 1 ? "s" : ""} ago`;
+    }
+  }
+  return "just now";
+};
+
+// ================= COMMENT SECTION =================
 export default function CommentSection({ videoId }) {
   const [comments, setComments] = useState([]);
   const [text, setText] = useState("");
   const [editId, setEditId] = useState(null);
 
-  // Get logged-in user from localStorage
+  // Logged-in user
   const user = JSON.parse(localStorage.getItem("user"));
 
-  // Fetch comments for the current video
+  /* ================= FETCH COMMENTS ================= */
   useEffect(() => {
     fetch(`http://localhost:5000/api/comments/${videoId}`)
       .then((res) => res.json())
@@ -18,14 +43,11 @@ export default function CommentSection({ videoId }) {
 
   /* ================= ADD COMMENT ================= */
   const addComment = async () => {
-    // Prevent empty comments
     if (!text.trim()) return;
 
     const res = await fetch("http://localhost:5000/api/comments", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-
-      // Send username along with comment
       body: JSON.stringify({
         videoId,
         text,
@@ -35,7 +57,6 @@ export default function CommentSection({ videoId }) {
 
     const newComment = await res.json();
 
-    // Add new comment at top
     setComments([newComment, ...comments]);
     setText("");
   };
@@ -76,7 +97,7 @@ export default function CommentSection({ videoId }) {
     <div className="comment-section">
       <h3>Comments</h3>
 
-      {/* Add / Edit comment input */}
+      {/* Add / Edit Input */}
       <input
         value={text}
         onChange={(e) => setText(e.target.value)}
@@ -89,15 +110,19 @@ export default function CommentSection({ videoId }) {
         <button onClick={addComment}>Comment</button>
       )}
 
-      {/* Comment list */}
+      {/* Comments List */}
       {comments.map((c) => (
         <div key={c._id} className="comment">
-          {/* Show username */}
-          <strong>{c.username}</strong>
+          <div className="comment-header">
+            <strong>{c.username}</strong>
+            <span className="comment-time">
+              {timeAgo(c.createdAt)}
+            </span>
+          </div>
 
           <p>{c.text}</p>
 
-          {/* Allow edit/delete only for own comments */}
+          {/* Only owner can edit/delete */}
           {user.username === c.username && (
             <>
               <button
