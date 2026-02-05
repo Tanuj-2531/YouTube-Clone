@@ -89,15 +89,15 @@ const videos = [
     category: "Education"
   },
   {
-  videoId: "v9",
-  title: "India vs Pakistan Thriller – Last Over Finish",
-  thumbnailUrl: "https://i.ytimg.com/vi/XqZsoesa55w/maxresdefault.jpg",
-  duration: "9:05",
-  channelName: "Cricket Highlights",
-  channelAvatar: "https://randomuser.me/api/portraits/men/61.jpg",
-  views: "2.8M views",
-  uploadTime: "5 days ago",
-  category: "Sports"
+    videoId: "v9",
+    title: "India vs Pakistan Thriller – Last Over Finish",
+    thumbnailUrl: "https://i.ytimg.com/vi/XqZsoesa55w/maxresdefault.jpg",
+    duration: "9:05",
+    channelName: "Cricket Highlights",
+    channelAvatar: "https://randomuser.me/api/portraits/men/61.jpg",
+    views: "2.8M views",
+    uploadTime: "5 days ago",
+    category: "Sports"
   }
 ];
 
