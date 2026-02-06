@@ -34,19 +34,25 @@ export default function Home() {
 
   return (
     <>
-      {/* Header now receives search props */}
+      {/* ================= HEADER ================= */}
       <Header
         toggleSidebar={() => setIsOpen(!isOpen)}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       />
 
-      <div className="layout">
+      <div className={`layout ${isOpen ? "sidebar-open" : ""}`}>
+        
+        {/* ================= SIDEBAR ================= */}
         <Sidebar isOpen={isOpen} />
 
+        {/* ================= MAIN CONTENT ================= */}
         <main className="content">
           {/* Category filters */}
-          <FilterBar activeCategory={category} setCategory={setCategory} />
+          <FilterBar
+            activeCategory={category}
+            setCategory={setCategory}
+          />
 
           {/* Video grid */}
           <div className="video-grid">

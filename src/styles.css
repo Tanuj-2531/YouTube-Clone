@@ -128,11 +128,18 @@ button {
 
 /* ===== SIDEBAR ===== */
 .sidebar {
-  left: -240px;
+  position: fixed;
+  top: 56px;
+  left: 0;
   width: 240px;
   padding-top: 10px;
   height: calc(100vh - 56px);
   overflow-y: auto;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  background-color: #0f0f0f;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
 }
 
 .sidebar.open{
@@ -177,6 +184,13 @@ button {
 .content {
   flex: 1;
   padding: 16px 24px;
+  flex: 1;
+  margin-left: 0;
+  transition: margin-left 0.3s ease;
+}
+
+.layout.sidebar-open .content {
+  margin-left: 240px;    /* sidebar width */
 }
 
 /* ===== FILTER BAR ===== */

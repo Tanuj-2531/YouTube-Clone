@@ -6,11 +6,11 @@ export default function FilterBar({ activeCategory, setCategory }) {
   // List of available filter categories
   const filters = [
     "All",
-    "Music",
-    "Comedy",
     "Sports",
     "Education",
     "Spiritual",
+    "Music",
+    "Comedy",
     "Trailers",
     "Virat Kohli",
     "Twenty20 Cricket",
