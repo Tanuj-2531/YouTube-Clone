@@ -1,3 +1,6 @@
+import { thumbnails, avatars, videos } from "../assets";
+
+
 // Sample video data for homepage grid + watch page
 const videos = [
   {
@@ -81,13 +84,13 @@ const videos = [
   {
     videoId: "v7",
     title: "Premanand Ji Maharaj – Powerful Spiritual Speech",
-    thumbnailUrl: "https://picsum.photos/seed/premanand/800/450",
-    videoUrl: "https://www.w3schools.com/html/mov_bbb.mp4",
-    duration: "31:12",
-    channelName: "Bhakti Sagar",
-    channelAvatar: "https://randomuser.me/api/portraits/men/41.jpg",
-    views: "1.1M views",
-    uploadTime: "2 weeks ago",
+    thumbnailUrl: thumbnails.t7,
+    videoUrl: videos.v7,
+    duration: "06:17",
+    channelName: "Bhajan Marg",
+    channelAvatar: avatars.a7,
+    views: "7.5M views",
+    uploadTime: "2 years ago",
     category: "Spiritual",
     likes: 1100000
   },
