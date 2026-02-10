@@ -169,7 +169,7 @@ export default function Sidebar({ isOpen }) {
         <p>Contact us Creator Advertise Developers</p>
         <p>Terms Privacy Policy & Safety</p>
         <p>How YouTube works Test new features</p>
-        <p className="copyright">© 2026 MyTube</p>
+        <p className="copyright">© 2026 YouTube</p>
       </div>
 
     </aside>

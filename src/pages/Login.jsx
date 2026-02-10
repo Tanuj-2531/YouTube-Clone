@@ -79,7 +79,7 @@ export default function Login() {
         username: formData.username,
         email: formData.email,
         password: formData.password,
-        avatar: getRandomAvatar(), // 👈 Avatar added here
+        avatar: getRandomAvatar(),
       };
 
       users.push(newUser);

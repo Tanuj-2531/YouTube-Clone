@@ -32,7 +32,6 @@ export default function FilterBar({ activeCategory, setCategory }) {
               : "filter-chip"
           }
 
-          // When clicked, update the category state in Home.jsx
           // This triggers re-filtering of videos
           onClick={() => setCategory(item)}
         >

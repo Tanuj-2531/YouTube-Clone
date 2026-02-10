@@ -208,7 +208,7 @@ button {
 }
 
 .layout.sidebar-open .content {
-  margin-left: 240px;    /* sidebar width */
+  margin-left: 240px;
 }
 
 /* ===== FILTER BAR ===== */
@@ -307,7 +307,7 @@ button {
   .sidebar-item span,
   .sidebar-title,
   .sidebar-footer {
-    display: none; /* Hide text, show icons only */
+    display: none;
   }
 
   .sidebar-item {
@@ -370,7 +370,7 @@ button {
   }
 
   .search-bar input {
-    display: none; /* Hide search input on small screens */
+    display: none;
   }
 
   .search-btn {
@@ -383,7 +383,7 @@ button {
   }
 
   .create-btn span {
-    display: none; /* Only icon visible */
+    display: none;
   }
 
   .sidebar {
@@ -586,7 +586,7 @@ button {
   }
 
   .login-page iframe {
-    height: 460px; /* Reduced height for better fit */
+    height: 460px;
   }
 }
 
@@ -604,7 +604,7 @@ button {
   }
 
   .login-page iframe {
-    height: 380px; /* Prevents overflow on small screens */
+    height: 380px;
   }
 
   .login-page button {
@@ -616,7 +616,7 @@ button {
 
   /* Header auth section */
   .user-info span {
-    display: none; /* Hide username text on small screens */
+    display: none;
   }
 
   .logout-btn {
@@ -638,7 +638,7 @@ button {
   }
 
   .login-page iframe {
-    height: 340px; /* Compact size for very small screens */
+    height: 340px;
   }
 
   .user-avatar {
@@ -928,12 +928,12 @@ button {
 /* ================= VIDEO CARD CLICK BEHAVIOR ================= */
 
 .video-card {
-  cursor: pointer;                /* 👈 shows clickable */
+  cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .video-card:hover {
-  transform: scale(1.02);         /* slight zoom like YouTube */
+  transform: scale(1.02);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 

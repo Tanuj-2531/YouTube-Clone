@@ -11,7 +11,7 @@ export default function VideoCard({ video }) {
   };
 
   return (
-    // 🔴 Make entire card clickable
+    // Make entire card clickable
     <div className="video-card" onClick={openVideo}>
 
       {/* Thumbnail Section */}

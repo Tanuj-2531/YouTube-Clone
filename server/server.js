@@ -23,7 +23,7 @@ app.use(express.json());
 /* ================= HEALTH CHECK ================= */
 // Useful for testing server quickly
 app.get("/", (req, res) => {
-  res.send("API is running 🚀");
+  res.send("API is running");
 });
 
 /* ================= API ROUTES ================= */
@@ -42,15 +42,15 @@ app.use("/api/channels", channelRoutes);
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("✅ MongoDB Connected");
+    console.log("MongoDB Connected");
 
     // Start server only after DB connects (Best Practice)
     app.listen(5000, () =>
-      console.log("🚀 Server running on port 5000")
+      console.log("Server running on port 5000")
     );
   })
   .catch((err) => {
-    console.error("❌ MongoDB Connection Failed:", err.message);
+    console.error("MongoDB Connection Failed:", err.message);
   });
 
 /* ================= GLOBAL ERROR HANDLER ================= */
