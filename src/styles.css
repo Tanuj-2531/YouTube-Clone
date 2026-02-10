@@ -135,41 +135,54 @@ button {
   padding-top: 10px;
   height: calc(100vh - 56px);
   overflow-y: auto;
-  transition: left 0.3s ease;
   z-index: 1000;
   background-color: #0f0f0f;
-  overflow-y: auto;
   transition: transform 0.3s ease;
 }
 
-.sidebar.open{
+.sidebar.open {
   left: 0;
 }
 
+.sidebar.closed {
+  transform: translateX(-100%);
+}
+
+/* ===== SIDEBAR ITEM ===== */
 .sidebar-item {
   display: flex;
   align-items: center;
   gap: 20px;
   padding: 10px 20px;
   border-radius: 10px;
+  color: #e5e5e5;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
+/* ===== HOVER EFFECT ===== */
 .sidebar-item:hover {
   background: #272727;
+  color: white;
 }
 
+/* ===== ACTIVE ITEM ===== */
 .sidebar-item.active {
   background: #272727;
+  color: white;
   font-weight: 500;
 }
 
+/* ===== SIDEBAR TITLE ===== */
 .sidebar-title {
   font-size: 13px;
   color: #aaa;
-  padding: 10px 20px;
+  padding: 12px 20px 6px;
   text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
+/* ===== FOOTER ===== */
 .sidebar-footer {
   font-size: 12px;
   color: #888;
@@ -178,6 +191,11 @@ button {
 
 .sidebar-footer p {
   margin: 6px 0;
+  cursor: pointer;
+}
+
+.sidebar-footer p:hover {
+  color: #ccc;
 }
 
 /* ===== CONTENT ===== */
@@ -938,41 +956,50 @@ button {
 /* ================= CREATE CHANNEL PAGE =============== */
 
 .create-channel {
-  max-width: 600px;
+  max-width: 620px;
   margin: 60px auto;
-  padding: 25px;
+  padding: 28px;
 
   display: flex;
   flex-direction: column;
   gap: 18px;
 
   background: #181818;
-  border-radius: 12px;
+  border-radius: 14px;
+  border: 1px solid #2a2a2a;
 }
 
-/* Channel Page Title */
+/* Page Title */
 .create-channel h2 {
-  color: #fff;
+  color: #ffffff;
   font-weight: 500;
 }
 
-/* Input + textarea styling */
+/* Input + textarea */
 .create-channel input,
 .create-channel textarea {
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
+  padding: 13px;
+  border-radius: 10px;
+  border: 1px solid transparent;
   outline: none;
 
   background: #2a2a2a;
-  color: #fff;
+  color: #ffffff;
+
+  transition: 0.2s;
 }
 
-/* Button styling */
+/* Focus effect */
+.create-channel input:focus,
+.create-channel textarea:focus {
+  border: 1px solid #3ea6ff;
+}
+
+/* Create Button */
 .create-channel button {
-  padding: 12px;
+  padding: 13px;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
 
   background: #ff0000;
   color: white;
@@ -994,7 +1021,7 @@ button {
   padding: 20px;
 }
 
-/* Channel Banner */
+/* Banner */
 .banner {
   width: 100%;
   height: 240px;
@@ -1005,13 +1032,19 @@ button {
 /* Channel Name */
 .channel-page h1 {
   margin-top: 15px;
-  color: white;
+  color: #ffffff;
 }
 
-/* Channel Description */
+/* Description */
 .channel-page p {
-  color: #aaa;
+  color: #aaaaaa;
   margin-top: 6px;
+}
+
+/* Section Title */
+.channel-page h3 {
+  margin-top: 30px;
+  color: white;
 }
 
 /* ================= CHANNEL VIDEO LIST ================ */
@@ -1022,10 +1055,10 @@ button {
   gap: 16px;
 
   margin-top: 18px;
-  padding: 12px;
+  padding: 14px;
 
   background: #1f1f1f;
-  border-radius: 12px;
+  border-radius: 14px;
 
   transition: 0.2s;
 }
@@ -1036,24 +1069,36 @@ button {
 
 /* Thumbnail */
 .channel-video img {
-  width: 180px;
-  height: 100px;
+  width: 200px;
+  height: 112px;
   object-fit: cover;
   border-radius: 10px;
+}
+
+/* Video Info Container */
+.channel-video-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 /* Video Title */
 .channel-video h4 {
   color: white;
-  margin-bottom: 6px;
+  margin: 0;
 }
 
-/* Video Action Buttons */
-.channel-video button {
-  margin-right: 10px;
+/* Buttons Row */
+.channel-video-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
 
-  padding: 6px 12px;
-  border-radius: 6px;
+/* Delete Button */
+.channel-video button {
+  padding: 6px 14px;
+  border-radius: 8px;
   border: none;
 
   background: #ff0000;
@@ -1061,10 +1106,29 @@ button {
   cursor: pointer;
 
   font-size: 13px;
+  transition: 0.2s;
 }
 
 .channel-video button:hover {
   background: #cc0000;
+}
+
+/* ================= EMPTY / LOADING STATES ============ */
+
+.channel-empty {
+  margin-top: 20px;
+  color: #888;
+}
+
+.channel-loading {
+  text-align: center;
+  margin-top: 40px;
+  color: #aaa;
+}
+
+.error-text {
+  color: #ff4d4d;
+  font-size: 14px;
 }
 
 /* ================= RESPONSIVE ======================== */
@@ -1081,6 +1145,10 @@ button {
     width: 100%;
     height: auto;
   }
+
+  .banner {
+    height: 200px;
+  }
 }
 
 /* Mobile */
@@ -1088,7 +1156,7 @@ button {
 
   .create-channel {
     margin: 20px;
-    padding: 18px;
+    padding: 20px;
   }
 
   .channel-page {
@@ -1096,6 +1164,10 @@ button {
   }
 
   .banner {
-    height: 180px;
+    height: 160px;
+  }
+
+  .channel-video {
+    padding: 12px;
   }
 }

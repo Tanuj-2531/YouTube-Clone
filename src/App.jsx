@@ -1,31 +1,31 @@
-// Routing tools
-import { Routes, Route } from "react-router-dom";
+/* ================= ROUTER ================= */
+import { Routes, Route, Navigate } from "react-router-dom";
 
-// Pages
+/* ================= PAGES ================= */
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Watch from "./pages/Watch";
 
-// ✅ NEW Channel Pages
+/* ================= CHANNEL PAGES ================= */
 import CreateChannel from "./pages/CreateChannel";
 import MyChannel from "./pages/MyChannel";
 
-// Protects pages from unauthorized users
+/* ================= AUTH GUARD ================= */
 import ProtectedRoute from "./components/ProtectedRoute";
 
+/* ================= MAIN APP ================= */
 function App() {
   return (
     <Routes>
+
       {/* ================= PUBLIC ROUTES ================= */}
 
-      {/* Login page */}
+      {/* Login Page */}
       <Route path="/login" element={<Login />} />
 
+      {/* ================= PROTECTED ROUTES ============== */}
 
-
-      {/* ================= PROTECTED ROUTES ================= */}
-
-      {/* Home page */}
+      {/* Home Page */}
       <Route
         path="/"
         element={
@@ -35,7 +35,7 @@ function App() {
         }
       />
 
-      {/* Watch page */}
+      {/* Watch Video Page */}
       <Route
         path="/watch/:videoId"
         element={
@@ -45,7 +45,7 @@ function App() {
         }
       />
 
-      {/* ✅ Create Channel Page */}
+      {/* Create Channel Page */}
       <Route
         path="/create-channel"
         element={
@@ -55,7 +55,7 @@ function App() {
         }
       />
 
-      {/* ✅ My Channel Page */}
+      {/* My Channel Page */}
       <Route
         path="/my-channel"
         element={
@@ -64,6 +64,11 @@ function App() {
           </ProtectedRoute>
         }
       />
+
+      {/* ================= FALLBACK ROUTE ================ */}
+
+      {/* If route not found → go Home */}
+      <Route path="*" element={<Navigate to="/" />} />
 
     </Routes>
   );

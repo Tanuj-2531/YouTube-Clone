@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
+
+/* ================= ICONS ================= */
 import HomeIcon from "@mui/icons-material/Home";
 import SmartDisplayIcon from "@mui/icons-material/SmartDisplay";
-import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
 import HistoryIcon from "@mui/icons-material/History";
 import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
@@ -16,18 +18,50 @@ import FlagIcon from "@mui/icons-material/Flag";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import FeedbackIcon from "@mui/icons-material/Feedback";
 
-// Sidebar navigation menu
+/* NEW ICONS */
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
+/* ================= SIDEBAR COMPONENT ================= */
 export default function Sidebar({ isOpen }) {
+
+  /* ================= GET LOGGED USER ================= */
+  const user = JSON.parse(localStorage.getItem("user"));
+
   return (
     <aside className={`sidebar ${isOpen ? "" : "closed"}`}>
-      
-      {/* SECTION 1 */}
-      <div className="sidebar-item active"><HomeIcon /> Home</div>
-      <div className="sidebar-item"><SmartDisplayIcon /> Shorts</div>
+
+      {/* ================= HOME ================= */}
+      <Link to="/" className="sidebar-item active">
+        <HomeIcon /> Home
+      </Link>
+
+      <div className="sidebar-item">
+        <SmartDisplayIcon /> Shorts
+      </div>
 
       <hr />
 
-      {/* SECTION 2 — SUBSCRIPTIONS */}
+      {/* ================= CHANNEL SECTION (ONLY IF LOGGED IN) ================= */}
+      {user && (
+        <>
+          <div className="sidebar-title">Your Channel</div>
+
+          {/* CREATE CHANNEL */}
+          <Link to="/create-channel" className="sidebar-item">
+            <AddCircleOutlineIcon /> Create Channel
+          </Link>
+
+          {/* MY CHANNEL */}
+          <Link to="/my-channel" className="sidebar-item">
+            <AccountCircleIcon /> My Channel
+          </Link>
+
+          <hr />
+        </>
+      )}
+
+      {/* ================= SUBSCRIPTIONS ================= */}
       <div className="sidebar-title">Subscriptions</div>
       <div className="sidebar-item">ashish chanchlani v...</div>
       <div className="sidebar-item">CarryMinati</div>
@@ -39,45 +73,97 @@ export default function Sidebar({ isOpen }) {
 
       <hr />
 
-      {/* SECTION 3 — YOU */}
+      {/* ================= YOU ================= */}
       <div className="sidebar-title">You</div>
-      <div className="sidebar-item"><HistoryIcon /> History</div>
-      <div className="sidebar-item"><PlaylistPlayIcon /> Playlists</div>
-      <div className="sidebar-item"><WatchLaterIcon /> Watch later</div>
-      <div className="sidebar-item"><ThumbUpAltOutlinedIcon /> Liked videos</div>
-      <div className="sidebar-item"><VideoLibraryIcon /> Your videos</div>
-      <div className="sidebar-item"><DownloadIcon /> Downloads</div>
+
+      <div className="sidebar-item">
+        <HistoryIcon /> History
+      </div>
+
+      <div className="sidebar-item">
+        <PlaylistPlayIcon /> Playlists
+      </div>
+
+      <div className="sidebar-item">
+        <WatchLaterIcon /> Watch later
+      </div>
+
+      <div className="sidebar-item">
+        <ThumbUpAltOutlinedIcon /> Liked videos
+      </div>
+
+      <div className="sidebar-item">
+        <VideoLibraryIcon /> Your videos
+      </div>
+
+      <div className="sidebar-item">
+        <DownloadIcon /> Downloads
+      </div>
+
       <div className="sidebar-item">Show more</div>
 
       <hr />
 
-      {/* SECTION 4 — EXPLORE */}
+      {/* ================= EXPLORE ================= */}
       <div className="sidebar-title">Explore</div>
-      <div className="sidebar-item"><LocalMallIcon /> Shopping</div>
-      <div className="sidebar-item"><MusicNoteIcon /> Music</div>
-      <div className="sidebar-item"><MovieIcon /> Films</div>
+
+      <div className="sidebar-item">
+        <LocalMallIcon /> Shopping
+      </div>
+
+      <div className="sidebar-item">
+        <MusicNoteIcon /> Music
+      </div>
+
+      <div className="sidebar-item">
+        <MovieIcon /> Films
+      </div>
+
       <div className="sidebar-item">Show more</div>
 
       <hr />
 
-      {/* SECTION 5 — MORE FROM YOUTUBE */}
+      {/* ================= MORE FROM YOUTUBE ================= */}
       <div className="sidebar-title">More from YouTube</div>
-      <div className="sidebar-item"><YouTubeIcon /> YouTube Premium</div>
-      <div className="sidebar-item"><YouTubeIcon /> YouTube Studio</div>
-      <div className="sidebar-item"><YouTubeIcon /> YouTube Music</div>
-      <div className="sidebar-item"><YouTubeIcon /> YouTube Kids</div>
+
+      <div className="sidebar-item">
+        <YouTubeIcon /> YouTube Premium
+      </div>
+
+      <div className="sidebar-item">
+        <YouTubeIcon /> YouTube Studio
+      </div>
+
+      <div className="sidebar-item">
+        <YouTubeIcon /> YouTube Music
+      </div>
+
+      <div className="sidebar-item">
+        <YouTubeIcon /> YouTube Kids
+      </div>
 
       <hr />
 
-      {/* SECTION 6 — SETTINGS */}
-      <div className="sidebar-item"><SettingsIcon /> Settings</div>
-      <div className="sidebar-item"><FlagIcon /> Report history</div>
-      <div className="sidebar-item"><HelpOutlineIcon /> Help</div>
-      <div className="sidebar-item"><FeedbackIcon /> Send feedback</div>
+      {/* ================= SETTINGS ================= */}
+      <div className="sidebar-item">
+        <SettingsIcon /> Settings
+      </div>
+
+      <div className="sidebar-item">
+        <FlagIcon /> Report history
+      </div>
+
+      <div className="sidebar-item">
+        <HelpOutlineIcon /> Help
+      </div>
+
+      <div className="sidebar-item">
+        <FeedbackIcon /> Send feedback
+      </div>
 
       <hr />
 
-      {/* FOOTER LINKS */}
+      {/* ================= FOOTER ================= */}
       <div className="sidebar-footer">
         <p>About Press Copyright</p>
         <p>Contact us Creator Advertise Developers</p>
