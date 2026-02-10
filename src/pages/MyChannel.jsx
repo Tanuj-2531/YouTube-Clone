@@ -1,6 +1,7 @@
 /* ================= IMPORTS ================= */
 import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import banner from "../assets/channelbar/channelBanner.png";
 
 /* ================= MY CHANNEL PAGE ================= */
 export default function MyChannel() {
@@ -139,7 +140,7 @@ export default function MyChannel() {
 
       {/* ===== CHANNEL BANNER ===== */}
       <img
-        src={channel.channelBanner}
+        src={channel.channelBanner || banner}
         alt="Channel Banner"
         className="banner"
       />
