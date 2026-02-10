@@ -6,16 +6,26 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Watch from "./pages/Watch";
 
+// ✅ NEW Channel Pages
+import CreateChannel from "./pages/CreateChannel";
+import MyChannel from "./pages/MyChannel";
+
 // Protects pages from unauthorized users
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
     <Routes>
-      {/* Login page (public) */}
+      {/* ================= PUBLIC ROUTES ================= */}
+
+      {/* Login page */}
       <Route path="/login" element={<Login />} />
 
-      {/* Home page (protected) */}
+
+
+      {/* ================= PROTECTED ROUTES ================= */}
+
+      {/* Home page */}
       <Route
         path="/"
         element={
@@ -25,8 +35,7 @@ function App() {
         }
       />
 
-      {/* Watch page (protected) */}
-      {/* 🔴 FIX: :videoId instead of :id */}
+      {/* Watch page */}
       <Route
         path="/watch/:videoId"
         element={
@@ -35,6 +44,27 @@ function App() {
           </ProtectedRoute>
         }
       />
+
+      {/* ✅ Create Channel Page */}
+      <Route
+        path="/create-channel"
+        element={
+          <ProtectedRoute>
+            <CreateChannel />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* ✅ My Channel Page */}
+      <Route
+        path="/my-channel"
+        element={
+          <ProtectedRoute>
+            <MyChannel />
+          </ProtectedRoute>
+        }
+      />
+
     </Routes>
   );
 }
