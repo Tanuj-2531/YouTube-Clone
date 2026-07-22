@@ -32,7 +32,7 @@ export default function MyChannel() {
       try {
 
         const res = await fetch(
-          `http://localhost:5000/api/channels/user/${user.username}`
+          `${import.meta.env.VITE_API_URL}/api/channels/user/${user.username}`
         );
 
         const data = await res.json();
@@ -62,7 +62,7 @@ export default function MyChannel() {
       try {
 
         const res = await fetch(
-          `http://localhost:5000/api/videos/channel/${channel.channelId}`
+          `${import.meta.env.VITE_API_URL}/api/videos/channel/${channel.channelId}`
         );
 
         const data = await res.json();
@@ -83,7 +83,7 @@ export default function MyChannel() {
     try {
 
       await fetch(
-        `http://localhost:5000/api/videos/${videoId}`,
+        `${import.meta.env.VITE_API_URL}/api/videos/${videoId}`,
         { method: "DELETE" }
       );
 
@@ -108,7 +108,7 @@ export default function MyChannel() {
     try {
 
       const res = await fetch(
-        `http://localhost:5000/api/channels/delete/${user.username}`,
+        `${import.meta.env.VITE_API_URL}/api/channels/delete/${user.username}`,
         { method: "DELETE" }
       );
 

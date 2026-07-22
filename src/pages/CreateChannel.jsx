@@ -54,7 +54,7 @@ export default function CreateChannel() {
 
       /* ===== API CALL ===== */
       const res = await fetch(
-        "http://localhost:5000/api/channels/create",
+        `${import.meta.env.VITE_API_URL}/api/channels/create`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

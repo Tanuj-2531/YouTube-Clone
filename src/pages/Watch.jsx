@@ -21,7 +21,7 @@ export default function Watch() {
   /* ================= INITIAL LOAD ================= */
   useEffect(() => {
     // Fetch likes from backend
-    fetch(`http://localhost:5000/api/videos/${videoId}`)
+    fetch(`${import.meta.env.VITE_API_URL}/api/videos/${videoId}`)
       .then((res) => res.json())
       .then((data) => {
         setLikes(data.likes || 0);
@@ -44,7 +44,7 @@ export default function Watch() {
     if (liked) {
       // UNLIKE
       const res = await fetch(
-        `http://localhost:5000/api/videos/unlike/${videoId}`,
+        `${import.meta.env.VITE_API_URL}/api/videos/unlike/${videoId}`,
         { method: "POST" }
       );
       const data = await res.json();
@@ -55,7 +55,7 @@ export default function Watch() {
     } else {
       // LIKE
       const res = await fetch(
-        `http://localhost:5000/api/videos/like/${videoId}`,
+        `${import.meta.env.VITE_API_URL}/api/videos/like/${videoId}`,
         { method: "POST" }
       );
       const data = await res.json();
